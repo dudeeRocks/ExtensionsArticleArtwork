@@ -11,6 +11,11 @@
 		FA972E552C99E36E0054549A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA972E542C99E36E0054549A /* ContentView.swift */; };
 		FA972E572C99E36F0054549A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA972E562C99E36F0054549A /* Assets.xcassets */; };
 		FA972E5B2C99E36F0054549A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA972E5A2C99E36F0054549A /* Preview Assets.xcassets */; };
+		FA972E622C99E4000054549A /* MyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA972E612C99E4000054549A /* MyScene.swift */; };
+		FA972E642C9AAC2B0054549A /* MyScene+Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA972E632C9AAC2B0054549A /* MyScene+Physics.swift */; };
+		FA972E662C9AAE980054549A /* MyScene+Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA972E652C9AAE980054549A /* MyScene+Box.swift */; };
+		FA972E682C9AC93B0054549A /* DustEffect.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA972E672C9AC93B0054549A /* DustEffect.sks */; };
+		FA972E6C2C9AD7AF0054549A /* MyScene+Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA972E6B2C9AD7AF0054549A /* MyScene+Emitter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		FA972E562C99E36F0054549A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA972E582C99E36F0054549A /* ExtensionsArticleArtwork.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionsArticleArtwork.entitlements; sourceTree = "<group>"; };
 		FA972E5A2C99E36F0054549A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FA972E612C99E4000054549A /* MyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScene.swift; sourceTree = "<group>"; };
+		FA972E632C9AAC2B0054549A /* MyScene+Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyScene+Physics.swift"; sourceTree = "<group>"; };
+		FA972E652C9AAE980054549A /* MyScene+Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyScene+Box.swift"; sourceTree = "<group>"; };
+		FA972E672C9AC93B0054549A /* DustEffect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = DustEffect.sks; sourceTree = "<group>"; };
+		FA972E6B2C9AD7AF0054549A /* MyScene+Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyScene+Emitter.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +64,11 @@
 			children = (
 				FA972E522C99E36E0054549A /* ExtensionsArticleArtworkApp.swift */,
 				FA972E542C99E36E0054549A /* ContentView.swift */,
+				FA972E612C99E4000054549A /* MyScene.swift */,
+				FA972E632C9AAC2B0054549A /* MyScene+Physics.swift */,
+				FA972E652C9AAE980054549A /* MyScene+Box.swift */,
+				FA972E6B2C9AD7AF0054549A /* MyScene+Emitter.swift */,
+				FA972E672C9AC93B0054549A /* DustEffect.sks */,
 				FA972E562C99E36F0054549A /* Assets.xcassets */,
 				FA972E582C99E36F0054549A /* ExtensionsArticleArtwork.entitlements */,
 				FA972E592C99E36F0054549A /* Preview Content */,
@@ -129,6 +144,7 @@
 			files = (
 				FA972E5B2C99E36F0054549A /* Preview Assets.xcassets in Resources */,
 				FA972E572C99E36F0054549A /* Assets.xcassets in Resources */,
+				FA972E682C9AC93B0054549A /* DustEffect.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +156,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA972E552C99E36E0054549A /* ContentView.swift in Sources */,
+				FA972E6C2C9AD7AF0054549A /* MyScene+Emitter.swift in Sources */,
 				FA972E532C99E36E0054549A /* ExtensionsArticleArtworkApp.swift in Sources */,
+				FA972E642C9AAC2B0054549A /* MyScene+Physics.swift in Sources */,
+				FA972E662C9AAE980054549A /* MyScene+Box.swift in Sources */,
+				FA972E622C99E4000054549A /* MyScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
