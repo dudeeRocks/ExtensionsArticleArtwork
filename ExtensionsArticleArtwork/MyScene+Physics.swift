@@ -15,13 +15,12 @@ extension MyScene  {
 
 extension MyScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
-        let box: Box? = contact.bodyA.node as? Box ?? contact.bodyB.node as? Box
-        
-        if let box = box {
-            if !collidedBoxes.contains(where: { $0.id == box.id }) {
-                addEmitters(for: box)
-                collidedBoxes.append(box)
-            }
+        if let box = contact.bodyA.node as? Box, !collidedBoxes.contains(where: { $0.id == box.id }) {
+            addEmitters(for: box)
+            collidedBoxes.append(box)
+        } else if let otherBox = contact.bodyB.node as? Box, !collidedBoxes.contains(where: { $0.id == otherBox.id }) {
+            addEmitters(for: otherBox)
+            collidedBoxes.append(otherBox)
         }
     }
 }

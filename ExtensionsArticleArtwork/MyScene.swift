@@ -19,12 +19,12 @@ class MyScene: SKScene {
         "+Layout",
         "+Actions",
         "+Navigation",
+        "+Location",
         "+Error",
         "+UITableViewDelegate",
         "+UITextFieldDelegate",
         "+UIPickerViewDelegate",
         "+MKMapViewDelegate",
-        "+CLLocationManagerDelegate",
     ]
     
     var collidedBoxes: [Box] = []
@@ -56,6 +56,11 @@ class MyScene: SKScene {
         let box = Box(text: text, color: color)
         box.position.x += self.frame.width / 2
         box.position.y += self.frame.height - box.frame.height
+        
+        #if os(macOS)
+        box.setScale(1.35)
+        #endif
+        
         scene.addChild(box)
     }
     

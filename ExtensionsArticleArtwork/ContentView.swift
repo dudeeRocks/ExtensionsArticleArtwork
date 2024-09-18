@@ -14,10 +14,13 @@ struct ContentView: View {
     
     var body: some View {
         SpriteView(scene: scene)
-            .ignoresSafeArea()
             .onTapGesture {
                 scene.resetScene()
                 print("tapped")
+            }
+            .onKeyPress(.space) {
+                scene.resetScene()
+                return .handled
             }
     }
 }

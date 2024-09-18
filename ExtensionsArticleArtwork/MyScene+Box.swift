@@ -45,8 +45,9 @@ extension MyScene {
             let height: CGFloat = 75
             let x: CGFloat = -(width / 2)
             let y: CGFloat = -(height / 2)
+            let cornerRadius: CGFloat = 20
             let rect: CGRect = .init(x: x, y: y, width: width, height: height)
-            let path: CGPath = .init(roundedRect: rect, cornerWidth: 20, cornerHeight: 20, transform: nil)
+            let path: CGPath = .init(roundedRect: rect, cornerWidth: cornerRadius, cornerHeight: cornerRadius, transform: nil)
             
             self.path = path
             #if os(macOS)
@@ -57,6 +58,32 @@ extension MyScene {
             self.lineWidth = 0
             self.strokeColor = .clear
             self.name = PhysicsBody.box.name
+            
+            addInnerBox()
+            
+            
+            func addInnerBox() {
+                let lineWidth: CGFloat = 6.0
+                let innerWidth = width - lineWidth
+                let innerHeight = height - lineWidth
+                let innerX = -(innerWidth / 2)
+                let innerY = -(innerHeight / 2)
+                let innerCornerRadius = cornerRadius - (lineWidth / 2)
+                let innerBoxRect = CGRect(x: innerX, y: innerY, width: innerWidth, height: innerHeight)
+                let innerBoxPath = CGPath(roundedRect: innerBoxRect, cornerWidth: innerCornerRadius, cornerHeight: innerCornerRadius, transform: nil)
+                let innerBox = SKShapeNode(path: innerBoxPath)
+                innerBox.fillColor = .clear
+                
+                #if os(macOS)
+                innerBox.strokeColor = NSColor(white: 1, alpha: 0.2)
+                #elseif os(iOS)
+                innerBox.strokeColor = UIColor(white: 1, alpha: 0.2)
+                #endif
+                
+                innerBox.lineWidth = 8
+                
+                self.addChild(innerBox)
+            }
         }
         
         private func addLabelNode() {
