@@ -10,9 +10,12 @@ import SwiftUI
 
 class MyScene: SKScene {
     
+    private let floor = Floor()
+    
     private var lastUpdate: TimeInterval = 0.0
     private var nextBoxHue: CGFloat = 0.0
     private var nextExtension: Int = 0
+    private var isAutoReseting: Bool = false
     
     private let baseClassText: String = "ViewController"
     private let extensionsText: [String] = [
@@ -32,11 +35,16 @@ class MyScene: SKScene {
     override func didMove(to view: SKView) {
         scene?.size = view.frame.size
         setUpCamera()
-        addScenePhysics()
+        setPhysicsContactDelegate()
+        addChild(floor)
+        floor.position.x = frame.width / 2
     }
     
     override func update(_ currentTime: TimeInterval) {
-        guard nextExtension < extensionsText.count else { return }
+        guard nextExtension < extensionsText.count else {
+            autoReset()
+            return
+        }
         
         if lastUpdate == 0.0 {
             addBox(withText: baseClassText)
@@ -55,7 +63,7 @@ class MyScene: SKScene {
         let color = Color(hue: nextBoxHue, saturation: 1.0, brightness: 0.9)
         let box = Box(text: text, color: color)
         box.position.x += self.frame.width / 2
-        box.position.y += self.frame.height - box.frame.height
+        box.position.y += self.frame.height + box.frame.height
         
         #if os(macOS)
         box.setScale(1.35)
@@ -72,12 +80,35 @@ class MyScene: SKScene {
         self.addChild(camera)
     }
     
+    private func autoReset() {
+        guard !isAutoReseting else { return }
+        
+        isAutoReseting = true
+        
+        floor.run(.sequence([
+            .wait(forDuration: 1.0),
+            .fadeOut(withDuration: 0.5),
+            .removeFromParent(),
+        ])) {
+            self.physicsWorld.gravity.dy = -2
+        }
+        
+        run(.sequence([
+            .wait(forDuration: 5.0),
+        ])) {
+            self.physicsWorld.gravity.dy = -9.8
+            self.resetScene()
+            self.isAutoReseting = false
+        }
+    }
+    
     func resetScene() {
         removeAllChildren()
         nextBoxHue = 0.0
         lastUpdate = 0.0
         nextExtension = 0
         collidedBoxes.removeAll()
+        addChild(floor)
     }
 }
 

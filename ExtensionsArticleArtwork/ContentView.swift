@@ -13,7 +13,7 @@ struct ContentView: View {
     @State var scene = MyScene()
     
     var body: some View {
-        SpriteView(scene: scene)
+        SpriteView(scene: scene, debugOptions: [])
             .onTapGesture {
                 scene.resetScene()
                 print("tapped")

@@ -6,7 +6,6 @@ import SwiftUI
 extension MyScene {
     class Box: SKShapeNode {
         let text: String
-        var hasCollided: Bool = false
         let id = UUID()
         
         var bottomPoint: CGPoint {
@@ -17,14 +16,6 @@ extension MyScene {
         }
         
         // MARK:  Initializers
-        
-        init(text: String) {
-            self.text = text
-            super.init()
-            defineBoxNode()
-            addLabelNode()
-            addPhysics()
-        }
         
         init(text: String, color: Color) {
             self.text = text
@@ -60,7 +51,6 @@ extension MyScene {
             self.name = PhysicsBody.box.name
             
             addInnerBox()
-            
             
             func addInnerBox() {
                 let lineWidth: CGFloat = 6.0
@@ -99,7 +89,7 @@ extension MyScene {
         private func addPhysics() {
             let boxPhysicsBody = SKPhysicsBody(rectangleOf: self.frame.size)
             boxPhysicsBody.affectedByGravity = true
-            boxPhysicsBody.mass = 1
+            boxPhysicsBody.mass = 0.1
             boxPhysicsBody.categoryBitMask = .boxCategoryBitMask
             
             boxPhysicsBody.contactTestBitMask = .boxCategoryBitMask

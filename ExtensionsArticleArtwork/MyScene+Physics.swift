@@ -9,11 +9,16 @@ extension MyScene  {
         self.physicsBody?.categoryBitMask = .sceneCategoryBitMask
         self.physicsBody?.collisionBitMask = .boxCategoryBitMask
         self.physicsBody?.contactTestBitMask = .boxCategoryBitMask
-        self.physicsWorld.contactDelegate = self
     }
 }
 
 extension MyScene: SKPhysicsContactDelegate {
+    
+    func setPhysicsContactDelegate() {
+        self.physicsWorld.contactDelegate = self
+        self.physicsWorld.gravity.dy = -9.8
+    }
+    
     func didBegin(_ contact: SKPhysicsContact) {
         if let box = contact.bodyA.node as? Box, !collidedBoxes.contains(where: { $0.id == box.id }) {
             addEmitters(for: box)
